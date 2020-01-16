@@ -15,7 +15,7 @@
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-pack": "react-build -mw"
+    "electron-pack": "yarn react-build -mw"
   },
   "eslintConfig": {
     "extends": "react-app"
