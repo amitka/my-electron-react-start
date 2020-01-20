@@ -24,8 +24,10 @@ function createWindow() {
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // Show chrome developer tools when in dev environment.
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on("closed", function() {
