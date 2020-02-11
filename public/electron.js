@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
+const fs = require("fs");
 const isDev = require("electron-is-dev");
 const appMenu = require("./appMenu");
 
@@ -14,6 +15,7 @@ function createWindow() {
     width: 1280,
     height: 800,
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, "preload.js")
     }
   });
@@ -64,3 +66,10 @@ app.on("activate", function() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// EVENTS
+appMenu.events.on("menuCustomEvent", function() {
+  console.log("Custom event triggered by app menu...");
+  const msg = "Hello from main process";
+  mainWindow.webContents.send("mainProcessEvent", msg);
+});

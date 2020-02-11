@@ -1,6 +1,8 @@
 const { app } = require("electron");
-
+const EventEmitter = require("events");
+const emitter = new EventEmitter();
 const isMac = process.platform === "darwin";
+
 const defaultMenu = [
   // { role: 'appMenu' }
   ...(isMac
@@ -125,7 +127,8 @@ const customMenu = [
         label: "CustomEvent",
         accelerator: "CmdOrCtrl+A",
         click() {
-          console.log("Hello from custom event..");
+          console.log("Custom event was clicked on app menu...");
+          emitter.emit("menuCustomEvent");
         }
       }
     ]
@@ -133,5 +136,6 @@ const customMenu = [
 ];
 
 module.exports = {
-  template: customMenu
+  template: customMenu,
+  events: emitter
 };
