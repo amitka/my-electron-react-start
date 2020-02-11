@@ -1,6 +1,7 @@
-# My Electron Create-React-App Starter Project
+# my-electron-react-start
+This is a base project to start a simple elecron create-react-app application
 
-## Features:
+* Features:
   * Main Process to Renderer Process communnication
   * Custom App Menu Template
   * Custom App Icon Template
