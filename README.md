@@ -1,5 +1,5 @@
 # my-electron-react-start
-This is a base project to start a simple elecron create-react-app application
+This is a base project to start a simple electron create-react-app application
 
 * Features:
   * Main Process to Renderer Process communnication
