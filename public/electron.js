@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const isDev = require("electron-is-dev");
@@ -68,6 +68,13 @@ app.on("activate", function() {
 // code. You can also put them in separate files and require them here.
 
 // EVENTS
+
+// Renderer Process Event
+ipcMain.on("rendererEvent", (event, arg) => {
+  console.log(arg);
+});
+
+// App Menu Event
 appMenu.events.on("menuCustomEvent", function() {
   console.log("Custom event triggered by app menu...");
   const msg = "Hello from main process";

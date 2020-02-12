@@ -19,6 +19,13 @@ function App() {
       <h1>Electron Create-React-App Starter</h1>
       <h4>{appState.message}</h4>
       <h4>{mainProcessMsg}</h4>
+      <button
+        onClick={() => {
+          ipcRenderer.send("rendererEvent", "Hello from App.js");
+        }}
+      >
+        Triger Main Event
+      </button>
     </main>
   );
 }
